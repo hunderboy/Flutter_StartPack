@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_start_pack/common/const/colors.dart';
 import 'package:flutter_start_pack/common/layout/loader_overlay.dart';
 import 'package:flutter_start_pack/common/theme/app_colors.dart';
+import 'package:flutter_start_pack/common/view_component/theme_mode_button.dart';
 import 'package:flutter_start_pack/common/view_component/toast/custom_snack_bar.dart';
 import 'package:flutter_start_pack/user/model/user_model.dart';
 import 'package:flutter_start_pack/user/provider/user_me_provider.dart';
@@ -45,6 +46,15 @@ class SocialLoginScreen extends ConsumerWidget {
         child: SafeArea(
           child: Column(
             children: [
+              /// 우측 상단 테마 변경 버튼
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 4, right: 8),
+                  child: ThemeModeButton(),
+                ),
+              ),
+
               /// 로고 영역
               Expanded(
                 child: Column(
