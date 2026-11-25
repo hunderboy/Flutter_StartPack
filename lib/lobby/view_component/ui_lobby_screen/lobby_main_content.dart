@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_start_pack/common/const/colors.dart';
 import 'package:flutter_start_pack/lobby/view/home_tab.dart';
 import 'package:flutter_start_pack/lobby/view/my_page_tab.dart';
 import 'package:flutter_start_pack/lobby/view/search_tab.dart';
@@ -27,15 +26,12 @@ class LobbyMainContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: IndexedStack(
         index: lobbyPageIndex,
         children: _tabs.map((tab) => tab.page).toList(),
       ),
+      // 배경 / 선택 색상은 AppTheme.bottomNavigationBarTheme 에서 지정
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        selectedItemColor: AppColor.Grey_100,
-        unselectedItemColor: AppColor.Grey_40,
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
         unselectedLabelStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600),

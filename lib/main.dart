@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:flutter_start_pack/common/const/colors.dart';
 import 'package:flutter_start_pack/common/provider/route/go_router.dart';
+import 'package:flutter_start_pack/common/theme/app_theme.dart';
+import 'package:flutter_start_pack/common/theme/theme_mode_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Flutter 엔진과 위젯 바인딩을 먼저 초기화
@@ -36,11 +37,9 @@ class App extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Flutter Start Pack',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.Primary),
-        scaffoldBackgroundColor: Colors.white,
-        textSelectionTheme: const TextSelectionThemeData(cursorColor: AppColor.Primary),
-      ),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ref.watch(themeModeProvider),
       routerConfig: router,
     );
   }

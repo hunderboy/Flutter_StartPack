@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_start_pack/common/const/colors.dart';
 import 'package:flutter_start_pack/common/layout/loader_overlay.dart';
+import 'package:flutter_start_pack/common/theme/app_colors.dart';
 import 'package:flutter_start_pack/common/view_component/toast/custom_snack_bar.dart';
 import 'package:flutter_start_pack/user/model/user_model.dart';
 import 'package:flutter_start_pack/user/provider/user_me_provider.dart';
@@ -36,37 +37,41 @@ class SocialLoginScreen extends ConsumerWidget {
       }
     }
 
+    final colors = context.colors;
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: LoaderOverlay(
         isLoading: user is UserModelLoading,
         child: SafeArea(
           child: Column(
             children: [
               /// 로고 영역
-              const Expanded(
+              Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.rocket_launch_rounded, size: 72, color: AppColor.Primary),
-                    SizedBox(height: 16),
+                    const Icon(Icons.rocket_launch_rounded, size: 72, color: AppColor.Primary),
+                    const SizedBox(height: 16),
                     Text(
                       'Flutter Start Pack',
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w800,
-                        color: AppColor.Grey_100,
+                        color: colors.textPrimary,
                         letterSpacing: -0.3,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       '소셜 계정으로 간편하게 시작하세요.',
-                      style: TextStyle(fontSize: 14, color: AppColor.Grey_70),
+                      style: TextStyle(fontSize: 14, color: colors.textSecondary),
                     ),
                   ],
                 ),
               ),
+
+              /// 소셜 로그인 버튼 색상은 브랜드 가이드에 따라 테마와 무관하게 고정한다.
+              /// (테두리만 테마에 맞춰 배경과 구분되도록 처리)
 
               /// 구글
               SocialLoginButton(
@@ -75,11 +80,11 @@ class SocialLoginScreen extends ConsumerWidget {
                 logoAssetPath: 'asset/svg/logo/logo_google.svg',
                 backgroundColor: AppColor.Google_White,
                 textColor: AppColor.Grey_100,
-                borderColor: AppColor.Grey_10,
+                borderColor: colors.divider,
                 onPressed: () => notifier.googleLogin(),
               ),
 
-              /// 애플
+              /// 애플 : 다크 테마에서는 검은 배경과 구분되도록 테두리 추가
               SocialLoginButton(
                 key: const Key('apple_login_button'),
                 text: 'Apple로 시작하기',
@@ -87,6 +92,7 @@ class SocialLoginScreen extends ConsumerWidget {
                 backgroundColor: AppColor.Apple_Black,
                 textColor: Colors.white,
                 logoColor: Colors.white,
+                borderColor: context.isDarkMode ? AppColor.Grey_80 : null,
                 onPressed: () => notReady('Apple', notifier.appleLogin),
               ),
 

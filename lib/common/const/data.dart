@@ -4,6 +4,7 @@ import 'dart:io';
 /// Secure Storage Key
 const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN';
 const REFRESH_TOKEN_KEY = 'REFRESH_TOKEN';
+const THEME_MODE_KEY = 'THEME_MODE';
 
 /// 로컬 서버 ip 주소 (localhost 테스트 용)
 const emulatorIp = '10.0.2.2:3000';  // Android Emulator

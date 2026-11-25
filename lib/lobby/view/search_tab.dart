@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_start_pack/common/const/colors.dart';
 import 'package:flutter_start_pack/common/layout/default_layout.dart';
+import 'package:flutter_start_pack/common/theme/app_colors.dart';
 
 /// 검색 탭 (예시 화면)
 class SearchTab extends StatelessWidget {
@@ -19,17 +19,16 @@ class SearchTab extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: '검색어를 입력하세요',
                 prefixIcon: const Icon(Icons.search_rounded),
-                filled: true,
-                fillColor: AppColor.Background_Gray,
+                filled: true, // fillColor 는 AppTheme.inputDecorationTheme 에서 지정
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
               child: Center(
-                child: Text('검색 결과가 여기에 표시됩니다.', style: TextStyle(color: AppColor.Grey_60)),
+                child: Text('검색 결과가 여기에 표시됩니다.', style: TextStyle(color: context.colors.textTertiary)),
               ),
             ),
           ],

@@ -45,6 +45,10 @@ common/
 ├── layout/             # DefaultLayout, LoaderOverlay (공통 레이아웃)
 ├── provider/route/     # go_router, router_guard_provider, app_routes
 ├── storage/            # SecureStorage
+├── theme/              # 라이트/다크 테마
+│   ├── app_colors.dart #   의미 기반 컬러 (ThemeExtension) : context.colors.xxx
+│   ├── app_theme.dart  #   AppTheme.light / AppTheme.dark
+│   └── theme_mode_provider.dart # 시스템/라이트/다크 전환 + 저장
 ├── view/               # SplashScreen
 └── view_component/     # 공통 UI 컴포넌트 (SnackBar 등)
 ```

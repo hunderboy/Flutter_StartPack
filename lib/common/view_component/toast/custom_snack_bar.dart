@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_start_pack/common/const/colors.dart';
+import 'package:flutter_start_pack/common/theme/app_colors.dart';
 
 enum SnackBarType { positive, negative, info }
 
@@ -13,8 +14,8 @@ void showCustomSnackBar(
 ]) {
   final Color backgroundColor = switch (type) {
     SnackBarType.positive => AppColor.Primary,
-    SnackBarType.negative => AppColor.Primary_Red,
-    SnackBarType.info => AppColor.Grey_100,
+    SnackBarType.negative => context.colors.danger,
+    SnackBarType.info => context.colors.snackBarInfo,
   };
 
   ScaffoldMessenger.of(context)

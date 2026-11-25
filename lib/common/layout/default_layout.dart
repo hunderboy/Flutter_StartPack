@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:flutter_start_pack/common/const/colors.dart';
 
 /// 공통 레이아웃
 /// - title 이 있으면 AppBar 를 보여준다.
@@ -29,7 +26,7 @@ class DefaultLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor ?? Colors.white,
+      backgroundColor: backgroundColor, // null 이면 테마의 scaffoldBackgroundColor 사용
       appBar: _renderAppBar(),
       body: SafeArea(bottom: safeAreaBottom, child: body),
       bottomNavigationBar: bottomNavigationBar,
@@ -40,13 +37,8 @@ class DefaultLayout extends StatelessWidget {
   AppBar? _renderAppBar() {
     if (title == null) return null;
 
+    // 배경 / 글자색 / elevation / 상태바 스타일은 AppTheme.appBarTheme 에서 지정
     return AppBar(
-      backgroundColor: Colors.white,
-      foregroundColor: AppColor.Grey_100,
-      elevation: 0,
-      scrolledUnderElevation: 0, // 스크롤 시 AppBar 색상 변경 방지
-      centerTitle: true,
-      systemOverlayStyle: SystemUiOverlayStyle.dark,
       title: Text(
         title!,
         style: const TextStyle(
