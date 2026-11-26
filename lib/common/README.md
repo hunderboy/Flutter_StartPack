@@ -31,7 +31,9 @@ UserModel         → /  (Lobby)
 ## 네트워크 (dio)
 
 - `@Headers({'accessToken': 'true'})` 를 붙이면 `CustomInterceptor` 가 저장된 토큰으로 `authorization: Bearer ...` 를 주입합니다.
-- 401 응답 시 refreshToken 으로 재발급 후 원래 요청을 재전송하고, 실패 시 로그아웃합니다.
+- 401 응답 시 refreshToken 으로 재발급 후 원래 요청을 재전송합니다.
+  - `QueuedInterceptor` 라서 여러 요청이 동시에 401 을 받아도 재발급은 한 번만 하고, 나머지는 새 토큰으로 재전송합니다.
+  - 재발급 API 가 401 / 403 이면 로그아웃, 그 밖의 오류(네트워크, 500 등)는 로그아웃 없이 에러만 전달합니다.
 - 새 Repository 는 `dio/sample/sample_repository.dart` 를 복사해서 시작합니다.
 - 모델 / Repository 수정 후 코드 생성 : `dart run build_runner build`
 
