@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:flutter_start_pack/common/notification/local_notification_service.dart';
+import 'package:flutter_start_pack/common/notification/notification_tap_handler.dart';
 import 'package:flutter_start_pack/common/provider/route/go_router.dart';
 import 'package:flutter_start_pack/common/theme/app_theme.dart';
 import 'package:flutter_start_pack/common/theme/theme_mode_provider.dart';
@@ -14,6 +16,9 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  /// 로컬 알림 초기화 (권한 요청은 필요한 화면에서 requestPermission() 호출)
+  await LocalNotificationService.instance.init();
 
   // TODO: 소셜 로그인 SDK / Firebase 등 초기화는 이곳에서 진행
   // KakaoSdk.init(nativeAppKey: '...');
@@ -33,6 +38,9 @@ class App extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // routerProvider 생성과 동시에 GoRouter 객체를 반환 받는다.
     final router = ref.watch(routerProvider);
+
+    // 알림 탭 시 payload 경로로 화면 이동
+    ref.watch(notificationTapHandlerProvider);
 
     return MaterialApp.router(
       title: 'Flutter Start Pack',

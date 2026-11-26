@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import 'package:flutter_start_pack/common/view/notification_test_screen.dart';
 import 'package:flutter_start_pack/common/view/splash_screen.dart';
 import 'package:flutter_start_pack/lobby/lobby_screen.dart';
 import 'package:flutter_start_pack/user/view/social_login_screen.dart';
@@ -16,6 +17,12 @@ List<GoRoute> buildAppRoutes() => [
     name: LobbyScreen.routeName,
     builder: (_, _) => const LobbyScreen(),
     routes: [
+      // 로컬 알림 테스트 (알림 탭 payload : '/notification-test?from=notification')
+      GoRoute(
+        path: 'notification-test',
+        name: NotificationTestScreen.routeName,
+        builder: (_, _) => const NotificationTestScreen(),
+      ),
       // Lobby 하위 화면 예시
       // GoRoute(
       //   path: 'setting',

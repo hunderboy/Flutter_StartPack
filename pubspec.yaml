@@ -32,6 +32,9 @@ dependencies:
 
   # UI 관련 패키지
   flutter_svg: ^2.3.4
+  flutter_local_notifications: ^22.3.3
+  timezone: ^0.11.2
+  flutter_timezone: ^5.1.1
 
   # TODO: 소셜 로그인 실제 연동 시 추가 (각 SDK 별 네이티브 설정 필요)
   # google_sign_in:

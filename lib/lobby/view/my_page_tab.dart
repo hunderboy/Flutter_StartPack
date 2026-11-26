@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:flutter_start_pack/common/layout/default_layout.dart';
 import 'package:flutter_start_pack/common/theme/app_colors.dart';
 import 'package:flutter_start_pack/common/theme/theme_mode_provider.dart';
+import 'package:flutter_start_pack/common/view/notification_test_screen.dart';
 import 'package:flutter_start_pack/user/model/user_model.dart';
 import 'package:flutter_start_pack/user/provider/user_me_provider.dart';
 
@@ -54,6 +56,14 @@ class MyPageTab extends ConsumerWidget {
                 ),
               ],
             ),
+          ),
+          const Divider(height: 1),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+            leading: const Icon(Icons.notifications_outlined),
+            title: const Text('알림 테스트'),
+            trailing: const Icon(Icons.chevron_right_rounded),
+            onTap: () => context.pushNamed(NotificationTestScreen.routeName),
           ),
           const Divider(height: 1),
           ListTile(
